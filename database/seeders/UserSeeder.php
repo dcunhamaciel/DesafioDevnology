@@ -20,8 +20,9 @@ class UserSeeder extends Seeder
     {
         $this->userRepository = new UserRepository(new User());
 
-        $this->createUser('Diego Maciel', 'dcunhamaciel@gmail.com', '123');
-        $this->createUser('Guilherme Mendes', 'guilhermel@gmail.com', '123');
+        $this->createUser('Diego Maciel', 'dcunhamaciel@gmail.com', '123');        
+        $this->createUser('Guilherme Mendes', 'guilherme@gmail.com', '123');
+        $this->createUser('Gustavo Ramos', 'gustavofaramos@gmail.com', '123');
     }
 
     private function createUser(string $name, string $email, string $password)
