@@ -19,6 +19,8 @@ class ResetPasswordController extends Controller
     |
     */
 
+    private const PASSWORD_MIN_LENGTH = 3;
+
     use ResetsPasswords;
 
     /**
@@ -27,4 +29,30 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Get the password reset validation rules.
+     *
+     * @return array
+     */
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => ['required', 'confirmed', 'min:' . self::PASSWORD_MIN_LENGTH],
+        ];
+    }
+
+    /**
+     * Get the password reset validation error messages.
+     *
+     * @return array
+     */
+    protected function validationErrorMessages()
+    {
+        return [
+            'min' => 'A senha deve ter no mínimo ' . self::PASSWORD_MIN_LENGTH . ' caracteres.'
+        ];
+    }
 }
