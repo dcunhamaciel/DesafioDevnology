@@ -17,4 +17,5 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Auth::routes();
 
-Route::resource('user', \App\Http\Controllers\UserController::class);
+Route::middleware('auth')
+    ->resource('user', \App\Http\Controllers\UserController::class);
