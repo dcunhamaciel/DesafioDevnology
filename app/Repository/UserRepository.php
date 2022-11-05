@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Collection;
 use App\Models\User;
 
 class UserRepository
@@ -23,6 +24,13 @@ class UserRepository
         $user->save();
         
         return $user;
+    }
+
+    public function findAll(): ?Collection
+    {
+        $users = $this->user->orderBy('name')->get();
+
+        return $users;
     }
 
     public function findByEmail(string $email): ?User
