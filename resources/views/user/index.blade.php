@@ -2,7 +2,9 @@
 
 @section('content')
 <div class="container">
-    <button type="button" class="btn btn-primary">Novo Usuário</button>
+    <a href="{{ route('user.create') }}">
+        <button type="button" class="btn btn-primary">Novo Usuário</button>
+    </a>
     <hr>
     <table class="table table-striped table-hover">
         <thead>

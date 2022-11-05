@@ -11,4 +11,18 @@ class UserController extends Controller
     {
         return view('user.index', ['users' => $userRepository->findAll()]);
     }
+
+    public function create()
+    {
+        return view('user.create');
+    }
+
+    public function store(Request $request, UserRepository $userRepository)
+    {
+        $request['password'] = '123';
+
+        $userRepository->create($request->all());
+
+        return redirect()->route('user.index');
+    }
 }
