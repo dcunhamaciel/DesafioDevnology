@@ -39,4 +39,11 @@ class UserController extends Controller
 
         return redirect()->route('user.index');
     }
+
+    public function destroy(UserRepository $userRepository, int $id)
+    {
+        $userRepository->delete($id);
+
+        return redirect()->route('user.index');
+    }    
 }

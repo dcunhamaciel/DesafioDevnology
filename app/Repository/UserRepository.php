@@ -35,6 +35,12 @@ class UserRepository
         return $user;
     }
 
+    public function delete(int $id): void
+    {
+        $user = $this->user->find($id);
+        $user->delete($id);
+    }
+
     public function findAll(): ?Collection
     {
         $users = $this->user->orderBy('name')->get();

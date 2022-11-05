@@ -22,7 +22,11 @@
                         <a href="{{ route('user.edit', ['user' => $user->id]) }}" class="btn btn-secondary">Editar</a>
                     </td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-danger">Excluir</a>
+                        <form id="form_{{ $user->id }}" method="post" action="{{ route('user.destroy', ['user' => $user->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <a href="#" onclick="document.getElementById('form_{{ $user->id }}').submit()" class="btn btn-danger">Excluir</a>
+                        </form>
                     </td>
                 </tr>
             @endforeach
