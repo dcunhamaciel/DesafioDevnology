@@ -26,11 +26,27 @@ class UserRepository
         return $user;
     }
 
+    public function update(int $id, array $data): User
+    {
+        $user = $this->user->find($id);
+        $user->name = $data['name'];
+        $user->save();
+
+        return $user;
+    }
+
     public function findAll(): ?Collection
     {
         $users = $this->user->orderBy('name')->get();
 
         return $users;
+    }
+
+    public function findById(int $id): ?User
+    {
+        $user = $this->user->find($id);           
+
+        return $user;
     }
 
     public function findByEmail(string $email): ?User

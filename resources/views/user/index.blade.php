@@ -2,9 +2,7 @@
 
 @section('content')
 <div class="container">
-    <a href="{{ route('user.create') }}">
-        <button type="button" class="btn btn-primary">Novo Usuário</button>
-    </a>
+    <a href="{{ route('user.create') }}" class="btn btn-primary">Novo Usuário</a>
     <hr>
     <table class="table table-striped table-hover">
         <thead>
@@ -21,10 +19,10 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-secondary float-center">Alterar</button>
+                        <a href="{{ route('user.edit', ['user' => $user->id]) }}" class="btn btn-secondary">Editar</a>
                     </td>
                     <td class="text-center">
-                        <button type="button" class="btn btn-danger">Excluir</button>
+                        <a href="#" class="btn btn-danger">Excluir</a>
                     </td>
                 </tr>
             @endforeach

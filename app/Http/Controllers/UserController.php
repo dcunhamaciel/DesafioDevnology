@@ -25,4 +25,18 @@ class UserController extends Controller
 
         return redirect()->route('user.index');
     }
+
+    public function edit(UserRepository $userRepository, int $id)
+    {
+        $user = $userRepository->findById($id);
+
+        return view('user.edit', ['user' => $user]);
+    }
+
+    public function update(Request $request, UserRepository $userRepository, int $id)
+    {
+        $userRepository->update($id, $request->all());
+
+        return redirect()->route('user.index');
+    }
 }
